@@ -1,0 +1,3888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ATHLETIX Sports Club - Train, compete and grow with a community of passionate athletes.">
+    <title>ATHLETIX | Play Beyond Limits</title>
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- ================= CSS START ================= -->
+    <style>
+        :root {
+            --bg: #080f1b;
+            --surface: #101c2b;
+            --surface2: #142338;
+            --text: #f4f8ff;
+            --muted: #9aaabe;
+            --accent: #54e4ff;
+            --lime: #b7ff68;
+            --line: rgba(255,255,255,0.12);
+            --font: 'DM Sans', sans-serif;
+            --display: 'Space Grotesk', sans-serif;
+        }
+        /* BASIC RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 85px;
+        }
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        button, input, select {
+            font: inherit;
+        }
+        button {
+            cursor: pointer;
+        }
+        .container {
+            width: min(1160px, 90%);
+            margin: auto;
+        }
+        /* SCROLL PROGRESS */
+        .scroll-progress {
+            height: 3px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            background: linear-gradient(90deg, var(--accent), var(--lime));
+            z-index: 100;
+            box-shadow: 0 0 12px var(--accent);
+        }
+        /* HEADER */
+        .site-header {
+            height: 76px;
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            background: rgba(8,15,27,0.83);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--line);
+        }
+        .nav {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 22px;
+        }
+        .logo {
+            font: 700 1.2rem var(--display);
+            letter-spacing: 1.4px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+        .logo-mark {
+            width: 31px;
+            height: 31px;
+            display: grid;
+            place-items: center;
+            background: var(--accent);
+            color: #06111d;
+            transform: skew(-10deg);
+            box-shadow: 0 0 22px #54e4ff55;
+        }
+        .logo-dot {
+            color: var(--accent);
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 29px;
+            color: #c2ccda;
+            font-size: 0.88rem;
+        }
+        .nav-links a {
+            transition: color 0.25s, transform 0.25s;
+        }
+        .nav-links a:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+        .nav-cta {
+            border: 1px solid var(--line);
+            padding: 9px 15px;
+            border-radius: 4px;
+        }
+        .nav-cta:hover {
+         background: #00e5ff;
+    color: #080f1d !important;
+    border-color: #00e5ff;
+}
+        .theme-toggle,
+        .menu-toggle {
+            width: 39px;
+            height: 39px;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            background: transparent;
+            color: var(--text);
+            font-size: 1.15rem;
+            transition: 0.25s;
+        }
+        .theme-toggle:hover {
+            background: var(--accent);
+            color: #06111d;
+            transform: rotate(25deg);
+        }
+        .menu-toggle {
+            display: none;
+            border-radius: 5px;
+        }
+        /* HERO SECTION */
+        .hero {
+            min-height: 690px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            isolation: isolate;
+            background:
+                #101b2a
+                url('https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=2000&q=90')
+                center 42% / cover no-repeat;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: -15%;
+            z-index: -1;
+            background:
+                linear-gradient(
+                    100deg,
+                    rgba(4,10,19,.97),
+                    rgba(4,10,19,.77) 48%,
+                    rgba(4,10,19,.16)
+                ),
+                linear-gradient(
+                    0deg,
+                    rgba(4,10,19,.8),
+                    transparent 55%
+                );
+            animation: heroPan 18s ease-in-out infinite alternate;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            border: 1px solid #54e4ff30;
+            border-radius: 50%;
+            right: 9%;
+            top: 15%;
+            box-shadow:
+                0 0 0 45px #54e4ff0b,
+                0 0 0 90px #54e4ff08;
+            animation: orbitPulse 7s ease-in-out infinite;
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative;
+            padding: 85px 0 65px;
+            z-index: 1;
+        }
+        .eyebrow {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2.6px;
+            color: var(--accent);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .eyebrow::before {
+            content: "";
+            width: 24px;
+            height: 1px;
+            background: var(--accent);
+        }
+        .live-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--lime);
+            box-shadow: 0 0 0 5px #b7ff6822;
+            animation: blink 1.8s infinite;
+        }
+        h1, h2, h3 {
+            font-family: var(--display);
+            line-height: 1.04;
+        }
+        h1 {
+            font-size: clamp(4.4rem, 10vw, 8.5rem);
+            letter-spacing: -7px;
+            animation: riseIn .9s both;
+        }
+        h1 span,
+        h2 span {
+            color: var(--accent);
+        }
+        .hero-kicker {
+            font: 600 .78rem var(--display);
+            letter-spacing: 4px;
+            color: #d9e5f3;
+            margin: 10px 0 0;
+            animation: riseIn .9s .12s both;
+        }
+        .hero-copy {
+            color: #c2cede;
+            max-width: 455px;
+            margin: 23px 0 30px;
+            font-size: 1.02rem;
+            animation: riseIn .9s .22s both;
+        }
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 27px;
+            animation: riseIn .9s .32s both;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            padding: 14px 20px;
+            border: 0;
+            border-radius: 4px;
+            font-weight: 700;
+            transition: transform .25s, box-shadow .25s;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: #06111d;
+        }
+        .btn-primary::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -70%;
+            width: 45%;
+            height: 200%;
+            background: #ffffff80;
+            transform: rotate(25deg);
+            transition: left .55s;
+        }
+        .btn-primary:hover::after {
+            left: 130%;
+        }
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 34px #54e4ff35;
+        }
+        .text-link {
+            font-weight: 700;
+            font-size: .9rem;
+            transition: color .2s;
+        }
+        .text-link:hover {
+            color: var(--accent);
+        }
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 70px;
+            animation: riseIn .9s .42s both;
+        }
+        .hero-stats div {
+            display: flex;
+            flex-direction: column;
+        }
+        .hero-stats strong {
+            font: 700 2rem var(--display);
+        }
+        .hero-stats small {
+            font-size: .61rem;
+            letter-spacing: 1.7px;
+            color: #aab7c7;
+        }
+        .hero-note {
+            position: absolute;
+            right: 5%;
+            bottom: 48px;
+            writing-mode: vertical-rl;
+            font-size: .6rem;
+            letter-spacing: 2px;
+            color: #d0d9e4;
+        }
+        .floating-ball {
+            position: absolute;
+            right: 20%;
+            bottom: 14%;
+            font-size: 2rem;
+            filter: drop-shadow(0 0 14px #54e4ff88);
+            animation: float 5s ease-in-out infinite;
+        }
+        /* GENERAL SECTIONS */
+        .section {
+            padding: 105px 0;
+        }
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 30px;
+            margin-bottom: 42px;
+        }
+        h2 {
+            font-size: clamp(2.6rem, 5vw, 4.2rem);
+            letter-spacing: -2.5px;
+        }
+        .section-intro {
+            max-width: 365px;
+            color: var(--muted);
+            font-size: .95rem;
+        }
+        /* SPORTS FILTER */
+        .filter-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        .filter-row > span {
+            font-size: .65rem;
+            letter-spacing: 1.8px;
+            color: var(--muted);
+            font-weight: 700;
+        }
+        .filter-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        .filter-btn {
+            border: 1px solid var(--line);
+            color: var(--muted);
+            background: transparent;
+            padding: 7px 13px;
+            border-radius: 3px;
+            font-size: .78rem;
+            transition: .2s;
+        }
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #06111d;
+        }
+        /* SPORTS CARDS */
+        .sports-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 17px;
+        }
+        .sport-card {
+            background: var(--surface);
+            overflow: hidden;
+            border: 1px solid transparent;
+            transition: transform .35s, border-color .35s, box-shadow .35s;
+            transform-style: preserve-3d;
+        }
+        .sport-card:hover {
+            transform: translateY(-9px) rotateX(2deg);
+            border-color: #54e4ff66;
+            box-shadow: 0 22px 45px #0006, 0 0 25px #54e4ff12;
+        }
+        .sport-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            filter: saturate(.8);
+            transition: transform .65s, filter .4s;
+        }
+        .sport-card:hover img {
+            transform: scale(1.08);
+            filter: saturate(1.15);
+        }
+        .sport-info {
+            padding: 20px;
+        }
+        .sport-info > span {
+            font-size: .65rem;
+            letter-spacing: 1.8px;
+            color: var(--muted);
+        }
+        .sport-info h3 {
+            font-size: 1.4rem;
+            margin: 10px 0;
+        }
+        .sport-info p {
+            font-size: .82rem;
+            color: var(--muted);
+        }
+        .sport-card[hidden] {
+            display: none;
+        }
+        .no-results {
+            color: var(--muted);
+            padding: 25px 0;
+        }
+        /* ABOUT SECTION */
+        .about-section {
+            background: var(--surface);
+            padding: 105px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .about-section::after {
+            content: "ATHLETIX";
+            position: absolute;
+            right: -40px;
+            bottom: -80px;
+            font: 700 12rem var(--display);
+            color: #ffffff05;
+            pointer-events: none;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 9%;
+            align-items: center;
+        }
+        .about-image {
+            position: relative;
+            padding: 0 35px 35px 0;
+        }
+        .about-image::before {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 75%;
+            height: 75%;
+            border: 1px solid var(--accent);
+            animation: borderGlow 4s infinite;
+        }
+        .about-image img {
+            width: 100%;
+            height: 490px;
+            object-fit: cover;
+            position: relative;
+            display: block;
+            filter: saturate(.8);
+            transition: filter .4s;
+        }
+        .about-image:hover img {
+            filter: saturate(1.15);
+        }
+        .image-tag {
+            position: absolute;
+            left: -15px;
+            bottom: 65px;
+            background: var(--accent);
+            color: #07111b;
+            padding: 15px 19px;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            box-shadow: 0 12px 35px #54e4ff35;
+        }
+        .image-tag strong {
+            font: 700 2rem var(--display);
+        }
+        .image-tag span {
+            font-size: .63rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            line-height: 1.3;
+        }
+        .about-copy h2 {
+            margin-bottom: 24px;
+        }
+        .about-copy > p:not(.eyebrow) {
+            color: var(--muted);
+            max-width: 470px;
+        }
+        .benefit-list {
+            list-style: none;
+            margin: 26px 0 30px;
+            display: grid;
+            gap: 12px;
+            font-size: .9rem;
+        }
+        .benefit-list span {
+            color: var(--accent);
+            margin-right: 10px;
+        }
+        /* MEMBERSHIP */
+        .membership-section {
+            background: var(--bg);
+        }
+        .plans {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 15px;
+        }
+        .plan-card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            padding: 32px 28px;
+            position: relative;
+            transition: transform .3s, border-color .3s, box-shadow .3s;
+        }
+        .plan-card:hover {
+            transform: translateY(-8px);
+            border-color: #54e4ff88;
+            box-shadow: 0 24px 70px rgba(0,0,0,.28);
+        }
+        .plan-card.featured {
+            border-color: var(--accent);
+            background: linear-gradient(145deg,#14283a,#101c2b);
+            transform: translateY(-8px);
+        }
+        .plan-card.featured:hover {
+            transform: translateY(-15px);
+        }
+        .popular {
+            position: absolute;
+            right: 18px;
+            top: 0;
+            background: var(--accent);
+            color: #07111b;
+            padding: 6px 10px;
+            font-size: .58rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        .plan-label {
+            font-size: .65rem;
+            letter-spacing: 1.8px;
+            color: var(--muted);
+            font-weight: 700;
+        }
+        .plan-card h3 {
+            font-size: 1.8rem;
+            margin: 14px 0;
+        }
+        .plan-price {
+            font: 700 2.2rem var(--display);
+            color: var(--accent);
+        }
+        .plan-price small {
+            font: 400 .8rem var(--font);
+            color: var(--muted);
+        }
+        .plan-desc {
+            color: var(--muted);
+            font-size: .85rem;
+            margin: 5px 0 22px;
+        }
+        .plan-card ul {
+            list-style: none;
+            border-top: 1px solid var(--line);
+            padding-top: 20px;
+            display: grid;
+            gap: 12px;
+            color: #cbd4df;
+            font-size: .85rem;
+        }
+        .plan-card li::before {
+            content: "✓";
+            color: var(--lime);
+            margin-right: 10px;
+        }
+        .plan-link {
+            display: block;
+            border-top: 1px solid var(--line);
+            margin-top: 25px;
+            padding-top: 18px;
+            font-weight: 700;
+            font-size: .85rem;
+        }
+        .plan-link:hover {
+            color: var(--accent);
+        }
+        .disclaimer {
+            color: var(--muted);
+            font-size: .7rem;
+            margin-top: 18px;
+        }
+        /* JOIN FORM */
+        .join-section {
+            background: var(--surface2);
+            padding: 95px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .join-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10%;
+            align-items: start;
+        }
+        .join-section h2 {
+            font-size: clamp(2.8rem, 5vw, 4.4rem);
+        }
+        .join-copy {
+            color: var(--muted);
+            margin-top: 20px;
+            max-width: 330px;
+        }
+        .join-form {
+            display: grid;
+            gap: 18px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            padding: 28px;
+            box-shadow: 0 24px 70px rgba(0,0,0,.28);
+        }
+        .form-row {
+            display: grid;
+            gap: 7px;
+        }
+        .form-row label {
+            font-size: .8rem;
+            font-weight: 600;
+        }
+        .form-row input,
+        .form-row select {
+            width: 100%;
+            padding: 13px 14px;
+            background: #0d1725;
+            border: 1px solid var(--line);
+            border-radius: 3px;
+            color: var(--text);
+            outline: none;
+            transition: border .2s, box-shadow .2s;
+        }
+        .form-row input:focus,
+        .form-row select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px #54e4ff18;
+        }
+        .form-row input::placeholder {
+            color: #657387;
+        }
+        .form-row select option {
+            background: #0d1725;
+        }
+        .error {
+            color: #ff9b9b;
+            font-size: .72rem;
+            min-height: 14px;
+        }
+        .submit-btn {
+            justify-self: start;
+        }
+        .form-message {
+            font-size: .85rem;
+            color: var(--lime);
+            min-height: 22px;
+        }
+        /* FOOTER */
+        .footer {
+            background: #060b13;
+            padding: 35px 0 20px;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 30px;
+        }
+        .footer-content > p {
+            color: var(--muted);
+            font-size: .82rem;
+        }
+        .back-top {
+            font-size: .65rem;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+        }
+        .copyright {
+            border-top: 1px solid var(--line);
+            padding-top: 18px;
+            display: flex;
+            justify-content: space-between;
+            color: #718096;
+            font-size: .62rem;
+            letter-spacing: 1.3px;
+        }
+        /* SCROLL REVEAL */
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition:
+                opacity .75s ease,
+                transform .75s cubic-bezier(.2,.7,.2,1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-35px);
+            transition: opacity .8s, transform .8s;
+        }
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        /* LIGHT THEME */
+        .light-theme {
+            --bg: #f2f6fa;
+            --surface: #ffffff;
+            --surface2: #e6eef5;
+            --text: #101c2b;
+            --muted: #5d6b7c;
+            --line: rgba(16,28,43,.15);
+        }
+        body.light-theme .site-header {
+            background: rgba(242,246,250,.9);
+        }
+        body.light-theme .nav-links {
+            color: #435164;
+        }
+        body.light-theme .about-section {
+            background: #e6eef5;
+        }
+        body.light-theme .plan-card.featured {
+            background: linear-gradient(145deg,#e0f7fc,#fff);
+        }
+        body.light-theme .form-row input,
+        body.light-theme .form-row select {
+            background: #fff;
+            color: #101c2b;
+        }
+        body.light-theme .footer {
+            background: #101c2b;
+        }
+        /* ANIMATIONS */
+        @keyframes riseIn {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }}
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(-8deg);
+            }
+            50% {
+                transform: translateY(-22px) rotate(12deg);
+            }}
+        @keyframes blink {
+            0%, 100% {
+                box-shadow: 0 0 0 5px #b7ff6822;
+            }
+            50% {
+                box-shadow: 0 0 0 9px #b7ff6808;
+            }}
+        @keyframes orbitPulse {
+            0%, 100% {
+                transform: scale(.94);
+                opacity: .45;
+            }
+            50% {
+                transform: scale(1.06);
+                opacity: .9;
+            }}
+        @keyframes heroPan {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.08);
+            }}
+        @keyframes borderGlow {
+            0%, 100% {
+                box-shadow: 0 0 0 transparent;
+            }
+            50% {
+                box-shadow: 0 0 24px #54e4ff33;
+            }}
+        /* TABLET RESPONSIVENESS */
+        @media(max-width: 900px) {
+            .sports-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .about-grid {
+                gap: 6%;
+            }
+            .about-image img {
+                height: 420px;
+            }
+            .nav-links {
+                gap: 16px;
+            }}
+        /* MOBILE RESPONSIVENESS */
+        @media(max-width: 680px) {
+            .site-header {
+                height: 68px;
+            }
+            .menu-toggle {
+                display: block;
+                margin-left: auto;
+            }
+            .nav {
+                gap: 10px;
+            }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 68px;
+                left: 0;
+                right: 0;
+                background: var(--surface);
+                padding: 20px 5%;
+                border-bottom: 1px solid var(--line);
+                flex-direction: column;
+                align-items: stretch;
+                gap: 16px;
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-cta {
+                text-align: center;
+            }
+            .hero {
+                min-height: 650px;
+                background-position: 58% center;
+            }
+            .hero::before {
+                background:
+                    linear-gradient(
+                        90deg,
+                        rgba(4,10,19,.96),
+                        rgba(4,10,19,.64)
+                    ),
+                    linear-gradient(
+                        0deg,
+                        rgba(4,10,19,.8),
+                        transparent 55%
+                    );
+                }
+            h1 {
+                letter-spacing: -3px;
+                font-size: clamp(4rem, 18vw, 6.2rem);
+            }
+            .hero-stats {
+                gap: 22px;
+                margin-top: 55px;
+            }
+            .hero-stats strong {
+                font-size: 1.5rem;
+            }
+            .hero-stats small {
+                font-size: .53rem;
+                letter-spacing: 1px;
+            }
+            .hero-note,
+            .floating-ball {
+                display: none;
+            }
+            .section,
+            .about-section,
+            .join-section {
+                padding: 72px 0;
+            }
+            .section-heading {
+                display: block;
+            }
+            .section-intro {
+                margin-top: 18px;
+            }
+            .sports-grid {
+                gap: 12px;
+            }
+            .sport-card img {
+                height: 155px;
+            }
+            .sport-info {
+                padding: 14px;
+            }
+            .sport-info h3 {
+                font-size: 1.15rem;
+            }
+            .sport-info p {
+                font-size: .75rem;
+            }
+            .filter-row {
+                align-items: flex-start;
+                gap: 15px;
+                flex-direction: column;
+            }
+            .about-grid,
+            .join-grid {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+            .about-image img {
+                height: 360px;
+            }
+            .about-copy h2 {
+                font-size: 3.3rem;
+            }
+            .plans {
+                grid-template-columns: 1fr;
+            }
+            .plan-card.featured {
+                transform: none;
+            }
+            .plan-card.featured:hover {
+                transform: translateY(-8px);
+            }
+            .join-section h2 {
+                font-size: 3.4rem;
+            }
+            .footer-content {
+                align-items: flex-start;
+                gap: 18px;
+                flex-direction: column;
+            }
+            .copyright {
+                gap: 10px;
+                flex-direction: column;
+            }}
+        @media(max-width: 380px) {
+            .sports-grid {
+                grid-template-columns: 1fr;
+            }
+            .sport-card img {
+                height: 210px;
+            }
+            .hero-actions {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 17px;
+            }}
+        /* ACCESSIBILITY: REDUCE MOTION */
+        @media(prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+            .reveal,
+            .reveal-left {
+                opacity: 1;
+                transform: none;
+            }}
+/* =================================
+   COMMON SECTION HEADING
+================================= */
+.section-heading {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 55px;
+}
+.section-heading h2 {
+    font-size: clamp(32px, 5vw, 52px);
+    color: #f5f7ff;
+    margin: 15px 0;
+}
+.section-heading h2 span {
+    color: #43d9f5;
+}
+.section-heading > p:last-child {
+    color: #aebdca;
+    line-height: 1.8;
+}
+/* =================================
+   FACILITIES
+================================= */
+.facilities-section,
+.coaches-section,
+.events-section {
+    padding: 100px 7%;
+    background: #101d2b;
+}
+.facilities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+.facility-card {
+    overflow: hidden;
+    background: #142435;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    transition: 0.4s ease;
+}
+.facility-card:hover {
+    transform: translateY(-9px);
+    border-color: #43d9f5;
+    box-shadow: 0 15px 35px rgba(67,217,245,0.10);
+}
+.facility-image,
+.coach-image {
+    position: relative;
+    overflow: hidden;
+}
+.facility-image img {
+    display: block;
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+.facility-card:hover img,
+.coach-card:hover img {
+    transform: scale(1.07);
+}
+.facility-image span,
+.coach-image span {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    background: #43d9f5;
+    color: #101d2b;
+    padding: 9px 13px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+.facility-info {
+    padding: 22px;
+}
+.facility-info h3 {
+    color: #f5f7ff;
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+.facility-info p {
+    color: #aebdca;
+    font-size: 14px;
+    line-height: 1.8;
+}
+/* =================================
+   PROFESSIONAL COACHES
+================================= */
+.coaches-section {
+    background: #0d1926;
+}
+.coaches-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+.coach-card {
+    overflow: hidden;
+    background: #142435;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    transition: 0.4s ease;
+}
+.coach-card:hover {
+    transform: translateY(-9px);
+    border-color: #43d9f5;
+    box-shadow: 0 15px 35px rgba(67,217,245,0.10);
+}
+.coach-image img {
+    display: block;
+    width: 100%;
+    height: 290px;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+.coach-info {
+    padding: 21px;
+}
+.coach-role {
+    color: #43d9f5;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+}
+.coach-info h3 {
+    color: #f5f7ff;
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+.coach-info > p:last-child {
+    color: #aebdca;
+    font-size: 13px;
+    line-height: 1.8;
+}
+/* =================================
+   UPCOMING EVENTS
+================================= */
+.events-section {
+    background: #101d2b;
+}
+.events-container {
+    max-width: 1050px;
+    margin: auto;
+    display: grid;
+    gap: 20px;
+}
+.event-card {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 25px;
+    background: #142435;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    transition: 0.35s ease;
+}
+.event-card:hover {
+    transform: translateX(7px);
+    border-color: #43d9f5;
+}
+.event-date {
+    min-width: 85px;
+    height: 85px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #43d9f5;
+    color: #101d2b;
+    border-radius: 12px;
+}
+.event-date strong {
+    font-size: 32px;
+    line-height: 1;
+}
+.event-date span {
+    font-size: 12px;
+    font-weight: 800;
+    margin-top: 6px;
+}
+.event-details {
+    flex: 1;
+}
+.event-category {
+    color: #43d9f5;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+.event-details h3 {
+    color: #f5f7ff;
+    font-size: 21px;
+    margin: 9px 0;
+}
+.event-details p {
+    color: #aebdca;
+    font-size: 13px;
+    line-height: 1.7;
+}
+.event-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 13px;
+}
+.event-meta span {
+    color: #aebdca;
+    font-size: 12px;
+}
+.event-link {
+    color: #43d9f5;
+    font-weight: 800;
+    font-size: 13px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+.event-link:hover {
+    letter-spacing: 1px;
+}
+/* =================================
+   RESPONSIVE DESIGN
+================================= */
+@media (max-width: 1000px) {
+    .coaches-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .facilities-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }}
+@media (max-width: 650px) {
+    .facilities-section,
+    .coaches-section,
+    .events-section {
+        padding: 70px 5%;
+    }
+    .facilities-grid,
+    .coaches-grid {
+        grid-template-columns: 1fr;
+    }
+    .facility-image img {
+        height: 240px;
+    }
+    .coach-image img {
+        height: 320px;
+    }
+    .event-card {
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 18px;
+    }
+    .event-date {
+        min-width: 65px;
+        height: 70px;
+    }
+    .event-date strong {
+        font-size: 25px;
+    }
+    .event-details {
+        min-width: 0;
+        flex-basis: calc(100% - 85px);
+    }
+    .event-link {
+        margin-left: 80px;
+    }}
+/* =================================
+   CONTACT SECTION
+================================= */
+.contact-section {
+    padding: 100px 7%;
+    background: #0d1926;
+}
+.contact-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 65px;
+    align-items: start;
+    margin-top: 60px;
+}
+/* CONTACT INFORMATION */
+.contact-label {
+    color: #43d9f5;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+.contact-info h3 {
+    color: #f5f7ff;
+    font-size: clamp(35px, 4vw, 52px);
+    line-height: 1.15;
+    margin: 20px 0;
+}
+.contact-info h3 span,
+.form-heading h3 span {
+    color: #43d9f5;
+}
+.contact-description {
+    color: #aebdca;
+    font-size: 15px;
+    line-height: 1.9;
+    margin-bottom: 35px;
+}
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 25px 0;
+}
+.contact-icon {
+    min-width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(67,217,245,0.10);
+    color: #43d9f5;
+    border: 1px solid rgba(67,217,245,0.25);
+    border-radius: 12px;
+    font-size: 22px;
+}
+.contact-item h4 {
+    color: #f5f7ff;
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+.contact-item p {
+    color: #aebdca;
+    font-size: 13px;
+    line-height: 1.6;
+}
+/* SOCIAL LINKS */
+.contact-socials {
+    margin-top: 35px;
+}
+.contact-socials h4 {
+    color: #f5f7ff;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 17px;
+}
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+.social-links a {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #43d9f5;
+    border: 1px solid rgba(67,217,245,0.35);
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 800;
+    transition: 0.3s ease;
+}
+.social-links a:hover {
+    background: #43d9f5;
+    color: #101d2b;
+    transform: translateY(-5px);
+}
+/* CONTACT FORM BOX */
+.contact-form-box {
+    background: #142435;
+    padding: 38px;
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+.form-heading h3 {
+    color: #f5f7ff;
+    font-size: 30px;
+    margin: 12px 0;
+}
+.form-heading > p:last-child {
+    color: #aebdca;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+/* FORM INPUTS */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.form-group label {
+    color: #f5f7ff;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 15px;
+    background: #0d1926;
+    color: #f5f7ff;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    outline: none;
+    font-family: inherit;
+    font-size: 13px;
+    transition: 0.3s ease;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #43d9f5;
+    box-shadow: 0 0 0 3px rgba(67,217,245,0.08);
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #738294;
+}
+.form-group select option {
+    background: #142435;
+    color: #fff;
+}
+.form-group textarea {
+    resize: vertical;
+}
+/* SUBMIT BUTTON */
+.contact-submit {
+    width: 100%;
+    padding: 16px;
+    background: #43d9f5;
+    color: #101d2b;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.contact-submit:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(67,217,245,0.20);
+}
+.contact-status {
+    margin-top: 15px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #43d9f5;
+}
+/* RESPONSIVE DESIGN */
+@media (max-width: 850px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }}
+@media (max-width: 550px) {
+    .contact-section {
+        padding: 70px 5%;
+    }
+    .contact-form-box {
+        padding: 23px;
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }}
+/* ===== PREMIUM FOOTER ===== */
+.site-footer {
+    background: #080f1d;
+    color: #ffffff;
+    padding: 65px 8% 20px;
+    border-top: 1px solid rgba(0, 229, 255, 0.2);
+}
+.footer-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.3fr;
+    gap: 40px;
+    max-width: 1250px;
+    margin: auto;
+    padding-bottom: 45px;
+}
+.footer-logo {
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-decoration: none;
+}
+.footer-logo span {
+    color: #00e5ff;
+}
+.footer-brand p {
+    color: #aab5c5;
+    line-height: 1.8;
+    margin: 18px 0;
+    max-width: 280px;
+}
+.footer-container h3 {
+    font-size: 17px;
+    margin-bottom: 22px;
+    color: #00e5ff;
+}
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+.footer-links a {
+    color: #aab5c5;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.footer-links a:hover {
+    color: #00e5ff;
+    transform: translateX(5px);
+}
+.footer-contact p {
+    color: #aab5c5;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+.footer-socials {
+    display: flex;
+    gap: 12px;
+    margin-top: 22px;
+}
+.footer-socials a {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #344054;
+    border-radius: 50%;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.footer-socials a:hover {
+    background: #00e5ff;
+    color: #080f1d;
+    border-color: #00e5ff;
+    transform: translateY(-4px);
+}
+.footer-button {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 11px 20px;
+    background: #00e5ff;
+    color: #080f1d;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.footer-button:hover {
+    background: #ffffff;
+    transform: translateY(-3px);
+}
+.footer-bottom {
+    max-width: 1250px;
+    margin: auto;
+    padding-top: 22px;
+    border-top: 1px solid #263244;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.footer-bottom p,
+.footer-bottom a {
+    color: #8995a7;
+    font-size: 13px;
+    text-decoration: none;
+}
+.footer-bottom a:hover {
+    color: #00e5ff;
+}
+/* Responsive Footer */
+@media (max-width: 900px) {
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }}
+@media (max-width: 550px) {
+    .site-footer {
+        padding: 45px 7% 20px;
+    }
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }}
+.nav-cta {
+    padding: 12px 20px;
+    border: 1px solid #00e5ff;
+    border-radius: 6px;
+    color: #00e5ff;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+.nav-cta:hover {
+   background: #00e5ff;
+    color: #080f1d !important;
+    border-color: #00e5ff;
+}
+/* Remove Join Club rectangular styling */
+.nav-links a.nav-cta {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+}
+/* Hover effect */
+.nav-links a.nav-cta:hover {
+    color: #00e5ff !important;
+    background: transparent !important;
+}
+/* Join the Club - Remove button styling completely */
+.nav-links a.nav-cta,
+.nav-links a.nav-cta:link,
+.nav-links a.nav-cta:visited,
+.nav-links a.nav-cta:hover,
+.nav-links a.nav-cta:focus,
+.nav-links a.nav-cta:active {
+    background: none !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    color: #dce5f2 !important;
+    text-decoration: none !important;
+}
+/* Normal hover effect */
+.nav-links a.nav-cta:hover {
+    color: #00e5ff !important;
+}
+*:focus {
+    outline: none !important;
+}
+*:focus-visible {
+    outline: none !important;
+}
+</style>
+<!-- ================= CSS END ================= -->
+</head>
+<body>
+    <!-- SCROLL PROGRESS BAR -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <!-- HEADER -->
+    <header class="site-header">
+        <nav class="nav container" aria-label="Main navigation">
+            <a href="#home" class="logo">
+                <span class="logo-mark">A</span>
+                ATHLETIX<span class="logo-dot">.</span>
+            </a>
+            <button class="menu-toggle"
+                id="menuToggle"
+                aria-label="Toggle navigation"
+                aria-expanded="false">
+                ☰
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="#home">Home</a>
+                <a href="#sports">Sports</a>
+                <a href="#about">About</a>
+                <a href="#facilities">Facilities</a>
+                <a href="#coaches">Coaches</a>
+                <a href="#events">Upcoming Events</a>
+                <a href="#membership">Membership</a>
+                <a href="#join" class="nav-cta">Join the club</a>
+               <a href="#contact">Contact Us</a>
+            </div>
+            <button class="theme-toggle"
+                id="themeToggle"
+                aria-label="Toggle colour theme">
+                ☼
+            </button>
+        </nav>
+    </header>
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 1: HOME -->
+        <section class="hero" id="home">
+
+            <div class="hero-content container">
+
+                <p class="eyebrow">
+
+                    <span class="live-dot"></span>
+
+                    YOUR GAME. YOUR COMMUNITY.
+
+                </p>
+
+
+                <h1>
+
+                    BUILT TO<br>
+
+                    <span>PLAY</span> BIG.
+
+                </h1>
+
+
+                <p class="hero-kicker">
+
+                    TRAIN HARD. PLAY SMART. STAY UNSTOPPABLE.
+
+                </p>
+
+
+                <p class="hero-copy" id="greeting">
+
+                    Welcome to ATHLETIX — where passion meets performance.
+
+                </p>
+
+
+                <div class="hero-actions">
+
+                    <a href="#sports" class="btn btn-primary">
+
+                        Explore sports <span>↗</span>
+
+                    </a>
+
+
+                    <a href="#about" class="text-link">
+
+                        Discover our club →
+
+                    </a>
+
+                </div>
+
+
+                <!-- ANIMATED STATISTICS -->
+
+                <div class="hero-stats">
+
+                    <div>
+
+                        <strong class="counter" data-target="12">0</strong>
+
+                        <small>SPORTS</small>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong class="counter"
+                            data-target="500"
+                            data-suffix="+">0</strong>
+
+                        <small>ACTIVE MEMBERS*</small>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong class="counter" data-target="1">0</strong>
+
+                        <small>STRONG COMMUNITY</small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="floating-ball" aria-hidden="true">
+
+                🏀
+
+            </div>
+
+
+            <div class="hero-note">
+
+                EST. 2024 / MOVE WITH PURPOSE
+
+            </div>
+
+        </section>
+
+
+
+        <!-- SECTION 2: SPORTS -->
+
+        <section class="section sports-section" id="sports">
+
+            <div class="container">
+
+
+                <div class="section-heading reveal">
+
+                    <div>
+
+                        <p class="eyebrow">FIND YOUR GAME</p>
+
+                        <h2>
+
+                            Choose your <span>arena.</span>
+
+                        </h2>
+
+                    </div>
+
+
+                    <p class="section-intro">
+
+                        Whether you love the speed of the court
+                        or the energy of the field, there is a
+                        place for you here.
+
+                    </p>
+
+                </div>
+
+
+<!-- SPORTS FILTER -->
+
+<div class="filter-row reveal">
+
+    <span>EXPLORE SPORTS</span>
+
+    <div class="filter-buttons">
+
+        <button class="filter-btn active" data-filter="all">
+            All Sports
+        </button>
+
+        <button class="filter-btn" data-filter="court">
+            Court
+        </button>
+
+        <button class="filter-btn" data-filter="field">
+            Field
+        </button>
+
+        <button class="filter-btn" data-filter="water">
+            Water
+        </button>
+
+        <button class="filter-btn" data-filter="combat">
+            Combat
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- SPORTS CARDS -->
+
+                <div class="sports-grid">
+
+<!-- 01. Badminton --->
+                    <article class="sport-card reveal"
+                        data-category="court">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=900&q=85"
+                            alt="Badminton players on a court">
+
+                        <div class="sport-info">
+
+                            <span>01 / COURT</span>
+
+                            <h3>Badminton</h3>
+
+                            <p>
+                                Speed, focus and lightning-fast rallies.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+<!-- 02. Basketball  --->
+                    <article class="sport-card reveal"
+                        data-category="court">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=900&q=85"
+                            alt="Basketball court and players">
+
+                        <div class="sport-info">
+
+                            <span>02 / COURT</span>
+
+                            <h3>Basketball</h3>
+
+                            <p>
+                                Teamwork, agility and big plays.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+<!-- 03. FOOTBALL-->
+                    <article class="sport-card reveal"
+                        data-category="field">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=900&q=85"
+                            alt="Football on a green playing field">
+
+                        <div class="sport-info">
+
+                            <span>03 / FIELD</span>
+
+                            <h3>Football</h3>
+
+                            <p>
+                                Play as one. Push beyond the limit.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+<!-- 04. TABLE TENNIS -->
+<article class="sport-card reveal" data-category="court">
+    <img
+        src="https://images.unsplash.com/photo-1534158914592-062992fbe900?auto=format&fit=crop&w=900&q=85"
+        alt="Table tennis players competing">
+
+    <div class="sport-info">
+        <span>04 / COURT</span>
+        <h3>Table Tennis</h3>
+        <p>Quick reflexes and razor-sharp precision.</p>
+    </div>
+</article>
+
+<!-- 05. TENNIS -->
+<article class="sport-card reveal" data-category="court">
+    <img
+        src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&w=900&q=85"
+        alt="Tennis court and tennis equipment">
+
+    <div class="sport-info">
+        <span>05 / COURT</span>
+        <h3>Tennis</h3>
+        <p>Master every serve, swing and rally.</p>
+    </div>
+</article>
+
+<!-- 06. CRICKET -->
+<article class="sport-card reveal" data-category="field">
+    <img
+        src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=900&q=85"
+        alt="Cricket match on a green field">
+
+    <div class="sport-info">
+        <span>6 / FIELD</span>
+        <h3>Cricket</h3>
+        <p>Perfect your batting, bowling and fielding.</p>
+    </div>
+</article>
+
+<!-- 07. ATHLETICS -->
+<article class="sport-card reveal" data-category="field">
+    <img
+        src="https://images.unsplash.com/photo-1533561052604-c3beb6d55b8d?auto=format&fit=crop&w=900&q=85"
+        alt="Athlete running on a track">
+
+    <div class="sport-info">
+        <span>7 / FIELD</span>
+        <h3>Athletics</h3>
+        <p>Build speed, stamina and limitless endurance.</p>
+    </div>
+</article>
+
+
+<!-- 08. HOCKEY -->
+<article class="sport-card reveal" data-category="field">
+
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROUY1BozasgBD8tzeXkb8hutz9cEkckbrSW7XnagcXHg&s=10"
+        alt="Field hockey players competing"
+        loading="lazy">
+
+    <div class="sport-info">
+        <span>08 / FIELD</span>
+        <h3>Hockey</h3>
+        <p>Speed, strategy and powerful teamwork.</p>
+    </div>
+
+</article>
+
+
+<!-- 9. SWIMMING -->
+<article class="sport-card reveal" data-category="water">
+    <img
+        src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=900&q=85"
+        alt="Swimming pool with swimmers">
+
+    <div class="sport-info">
+        <span>9 / WATER</span>
+        <h3>Swimming</h3>
+        <p>Strength, stamina and confidence in water.</p>
+    </div>
+</article>
+
+<!-- 10. BOXING -->
+<article class="sport-card reveal" data-category="combat">
+    <img
+        src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=900&q=85"
+        alt="Boxing training in a gym">
+
+    <div class="sport-info">
+        <span>10 / COMBAT</span>
+        <h3>Boxing</h3>
+        <p>Discipline, strength and fighting spirit.</p>
+    </div>
+</article>
+
+<!-- 11. KABADDI -->
+<article class="sport-card reveal" data-category="field">
+    <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQqesWubtAef_EAWSlKVx-w8_8Z2hA81YIblRCLOn_Qg&s=10"
+        alt="Athletes competing in a team sport">
+
+    <div class="sport-info">
+        <span>11 / FIELD</span>
+        <h3>Kabaddi</h3>
+        <p>Power, courage and tactical teamwork.</p>
+    </div>
+</article>
+
+
+<!--- 12. VOLLEYBALL --->
+                    <article class="sport-card reveal"
+                        data-category="court">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1592656094267-764a45160876?auto=format&fit=crop&w=900&q=85"
+                            alt="Volleyball net and ball on a court">
+
+                        <div class="sport-info">
+
+                            <span>12 / COURT</span>
+
+                            <h3>Volleyball</h3>
+
+                            <p>
+                                Power, precision and team spirit.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <p class="no-results" id="noResults" hidden>
+
+                    No sports found in this category.
+
+                </p>
+
+            </div>
+
+        </section>
+
+<!-- ===================================
+     ABOUT / SPORTS DETAILS
+=================================== -->
+
+
+<!-- 01. BADMINTON -->
+
+<section class="about-section sport-about-section" id="about">
+    <div class="container about-grid">
+
+        <div class="about-image reveal-left">
+            <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=900&q=85" 
+            alt="Badminton player playing a shot">
+            <div class="image-tag">
+                <strong>01</strong>
+                <span>FAST RALLIES.<br>SHARP REFLEXES.</span>
+            </div>
+        </div>
+
+        <div class="about-copy reveal">
+            <p class="eyebrow">SPEED / FOCUS / AGILITY</p>
+            <h2>Badminton<br><span>Excellence.</span></h2>
+            <p>
+                Badminton is a fast-paced racket sport that demands
+                speed, concentration and quick reflexes. It helps
+                players develop coordination, stamina and confidence
+                through exciting singles and doubles matches.
+            </p>
+            <ul class="benefit-list">
+                <li><span>✦</span> Improve speed and reflexes</li>
+                <li><span>✦</span> Develop footwork and coordination</li>
+                <li><span>✦</span> Learn singles and doubles strategies</li>
+            </ul>
+            <a href="#membership" class="text-link">Explore membership →</a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- 02. BASKETBALL -->
+
+<section class="about-section sport-about-section">
+    <div class="container about-grid">
+
+        <div class="about-image reveal-left">
+            <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=900&q=85" 
+            alt="Basketball player shooting">
+            <div class="image-tag">
+                <strong>02</strong>
+                <span>ONE TEAM.<br>ONE BASKET.</span>
+            </div>
+        </div>
+
+        <div class="about-copy reveal">
+            <p class="eyebrow">TEAMWORK / ENERGY / PRECISION</p>
+            <h2>Basketball<br><span>Unleashed.</span></h2>
+            <p>
+                Basketball combines athletic ability, teamwork and
+                smart decision-making. Players learn to dribble,
+                pass, shoot and defend while building strength,
+                balance and confidence on the court.
+            </p>
+            <ul class="benefit-list">
+                <li><span>✦</span> Master dribbling and shooting</li>
+                <li><span>✦</span> Build teamwork and coordination</li>
+                <li><span>✦</span> Improve speed and agility</li>
+            </ul>
+            <a href="#membership" class="text-link">Explore membership →</a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- 03. FOOTBALL -->
+
+<section class="about-section sport-about-section">
+    <div class="container about-grid">
+
+        <div class="about-image reveal-left">
+            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=900&q=85"
+             alt="Football players on the field">
+            <div class="image-tag">
+                <strong>03</strong>
+                <span>PLAY TOGETHER.<br>WIN TOGETHER.</span>
+            </div>
+        </div>
+
+        <div class="about-copy reveal">
+            <p class="eyebrow">PASSION / TEAMWORK / VICTORY</p>
+            <h2>Football<br><span>Unites.</span></h2>
+            <p>
+                Football is a dynamic team sport built around skill,
+                strategy and cooperation. From accurate passing to
+                powerful shooting, players develop endurance,
+                discipline and a strong team spirit.
+            </p>
+            <ul class="benefit-list">
+                <li><span>✦</span> Improve ball control and passing</li>
+                <li><span>✦</span> Develop stamina and endurance</li>
+                <li><span>✦</span> Build teamwork and match awareness</li>
+            </ul>
+            <a href="#membership" class="text-link">Explore membership →</a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- 04. TABLE TENNIS -->
+
+<section class="about-section sport-about-section">
+    <div class="container about-grid">
+
+        <div class="about-image reveal-left">
+            <img src="https://images.unsplash.com/photo-1534158914592-062992fbe900?auto=format&fit=crop&w=900&q=85" 
+            alt="Table tennis match">
+            <div class="image-tag">
+                <strong>04</strong>
+                <span>QUICK THINKING.<br>QUICKER REACTIONS.</span>
+            </div>
+        </div>
+
+        <div class="about-copy reveal">
+            <p class="eyebrow">REFLEXES / CONTROL / PRECISION</p>
+            <h2>Table Tennis<br><span>Precision.</span></h2>
+            <p>
+                Table tennis is an exciting indoor racket sport
+                that tests reaction time, concentration and
+                hand-eye coordination. Every rally challenges
+                players to think quickly and control the game.
+            </p>
+            <ul class="benefit-list">
+                <li><span>✦</span> Sharpen reflexes and focus</li>
+                <li><span>✦</span> Learn spins, serves and returns</li>
+                <li><span>✦</span> Improve hand-eye coordination</li>
+            </ul>
+            <a href="#membership" class="text-link">Explore membership →</a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- 05. TENNIS -->
+
+<section class="about-section sport-about-section">
+    <div class="container about-grid">
+
+        <div class="about-image reveal-left">
+            <img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&w=900&q=85" 
+            alt="Tennis player on court">
+            <div class="image-tag">
+                <strong>05</strong>
+                <span>EVERY SERVE.<br>EVERY POINT.</span>
+            </div>
+        </div>
+
+        <div class="about-copy reveal">
+            <p class="eyebrow">DISCIPLINE / POWER / CONTROL</p>
+            <h2>Tennis<br><span>Elevated.</span></h2>
+            <p>
+                Tennis is a competitive racket sport that combines
+                technique, movement and mental strength. Players
+                develop powerful serves, accurate shots and the
+                confidence to perform under pressure.
+            </p>
+            <ul class="benefit-list">
+                <li><span>✦</span> Develop serving and rally skills</li>
+                <li><span>✦</span> Improve balance and footwork</li>
+                <li><span>✦</span> Build focus and endurance</li>
+            </ul>
+            <a href="#membership" class="text-link">Explore membership →</a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- 06. CRICKET -->
+
+<section class="about-section sport-about-section">
+    <div class="container about-grid">
+
+        <div class="about-image reveal-left">
+            <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=900&q=85" alt="Cricket player batting">
+            <div class="image-tag">
+                <strong>06</strong>
+                <span>ONE GAME.<br>ENDLESS PASSION.</span>
+            </div>
+        </div>
+
+        <div class="about-copy reveal">
+            <p class="eyebrow">SKILL / STRATEGY / TEAM SPIRIT</p>
+            <h2>Cricket<br><span>Passion.</span></h2>
+            <p>
+                Cricket brings together batting, bowling and
+                fielding in a game of patience and strategy.
+                Players learn to work as a team, make smart
+                decisions and perform with confidence.
+            </p>
+            <ul class="benefit-list">
+                <li><span>✦</span> Improve batting and bowling skills</li>
+                <li><span>✦</span> Practise fielding and catching</li>
+                <li><span>✦</span> Develop match awareness and teamwork</li>
+            </ul>
+            <a href="#membership" class="text-link">Explore membership →</a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- 07. ATHLETICS -->
+
+<section class="about-section sport-about-section">
+    <div class="container about-grid">
+
+        <div class="about-image reveal-left">
+            <img src="https://images.unsplash.com/photo-1533561052604-c3beb6d55b8d?auto=format&fit=crop&w=900&q=85" 
+            alt="Athlete running on a track">
+            <div class="image-tag">
+                <strong>07</strong>
+                <span>PUSH LIMITS.<br>BREAK RECORDS.</span>
+            </div>
+        </div>
+
+        <div class="about-copy reveal">
+            <p class="eyebrow">SPEED / STAMINA / STRENGTH</p>
+            <h2>Athletics<br><span>Beyond Limits.</span></h2>
+            <p>
+                Athletics celebrates individual performance through
+                running, jumping and throwing events. It helps
+                athletes challenge their limits, improve physical
+                fitness and build determination.
+            </p>
+            <ul class="benefit-list">
+                <li><span>✦</span> Train for sprinting and distance running</li>
+                <li><span>✦</span> Build strength and endurance</li>
+                <li><span>✦</span> Improve speed and discipline</li>
+            </ul>
+            <a href="#membership" class="text-link">Explore membership →</a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- 08. HOCKEY -->
+
+<section class="about-section sport-about-section">
+    <div class="container about-grid">
+
+        <div class="about-image reveal-left">
+            <img src="https://images.unsplash.com/photo-1533561052604-c3beb6d55b8d?auto=format&fit=crop&w=900&q=85"
+             alt="Field hockey players competing">
+            <div class="image-tag">
+                <strong>08</strong>
+                <span>PLAY FAST.<br>STAY STRONG.</span>
+            </div>
+        </div>
+
+        <div class="about-copy reveal">
+            <p class="eyebrow">AGILITY / STRATEGY / TEAMWORK</p>
+            <h2>Hockey<br><span>In Motion.</span></h2>
+            <p>
+                Hockey is a fast-moving team sport that requires
+                coordination, quick decisions and excellent stick
+                control. Players develop tactical awareness,
+                speed and a strong sense of teamwork.
+            </p>
+            <ul class="benefit-list">
+                <li><span>✦</span> Learn stick handling and passing</li>
+                <li><span>✦</span> Improve speed and agility</li>
+                <li><span>✦</span> Develop attacking and defensive skills</li>
+            </ul>
+            <a href="#membership" class="text-link">Explore membership →</a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- 09. SWIMMING -->
+
+<section class="about-section sport-about-section">
+    <div class="container about-grid">
+
+        <div class="about-image reveal-left">
+            <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=900&q=85" 
+            alt="Swimmer training in a pool">
+            <div class="image-tag">
+                <strong>09</strong>
+                <span>FIND YOUR FLOW.<br>GO BEYOND.</span>
+            </div>
+        </div>
+
+        <div class="about-copy reveal">
+            <p class="eyebrow">ENDURANCE / BALANCE / FITNESS</p>
+            <h2>Swimming<br><span>Find Your Flow.</span></h2>
+            <p>
+                Swimming is a full-body activity that develops
+                cardiovascular fitness, coordination and endurance.
+                It offers a refreshing way to stay active while
+                learning essential water skills.
+            </p>
+            <ul class="benefit-list">
+                <li><span>✦</span> Learn different swimming strokes</li>
+                <li><span>✦</span> Build stamina and body coordination</li>
+                <li><span>✦</span> Understand water safety</li>
+            </ul>
+            <a href="#membership" class="text-link">Explore membership →</a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- 10. BOXING -->
+
+<section class="about-section sport-about-section">
+    <div class="container about-grid">
+
+        <div class="about-image reveal-left">
+            <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=900&q=85" alt="Boxer training in a gym">
+            <div class="image-tag">
+                <strong>10</strong>
+                <span>TRAIN HARD.<br>STAY DISCIPLINED.</span>
+            </div>
+        </div>
+
+        <div class="about-copy reveal">
+            <p class="eyebrow">DISCIPLINE / POWER / COURAGE</p>
+            <h2>Boxing<br><span>Fight Strong.</span></h2>
+            <p>
+                Boxing is a combat sport that develops fitness,
+                coordination and mental discipline. Through
+                structured training, athletes learn controlled
+                techniques, defensive movement and self-confidence.
+            </p>
+            <ul class="benefit-list">
+                <li><span>✦</span> Learn basic punching techniques</li>
+                <li><span>✦</span> Improve footwork and coordination</li>
+                <li><span>✦</span> Build strength and stamina</li>
+            </ul>
+            <a href="#membership" class="text-link">Explore membership →</a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- 11. KABADDI -->
+
+<section class="about-section sport-about-section">
+    <div class="container about-grid">
+
+        <div class="about-image reveal-left">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQqesWubtAef_EAWSlKVx-w8_8Z2hA81YIblRCLOn_Qg&s=10" alt="Kabaddi players competing">
+            <div class="image-tag">
+                <strong>11</strong>
+                <span>PLAY FEARLESSLY.<br>STAND TOGETHER.</span>
+            </div>
+        </div>
+
+        <div class="about-copy reveal">
+            <p class="eyebrow">COURAGE / POWER / TACTICS</p>
+            <h2>Kabaddi<br><span>Play Fearlessly.</span></h2>
+            <p>
+                Kabaddi is a traditional team sport that combines
+                strength, agility and tactical thinking. Players
+                develop raiding and defensive skills while learning
+                the importance of teamwork and quick decisions.
+            </p>
+            <ul class="benefit-list">
+                <li><span>✦</span> Practise raiding and defending</li>
+                <li><span>✦</span> Improve balance and agility</li>
+                <li><span>✦</span> Develop teamwork and strategy</li>
+            </ul>
+            <a href="#membership" class="text-link">Explore membership →</a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- 12. VOLLEYBALL -->
+
+<section class="about-section sport-about-section">
+    <div class="container about-grid">
+
+        <div class="about-image reveal-left">
+            <img src="https://images.unsplash.com/photo-1592656094267-764a45160876?auto=format&fit=crop&w=900&q=85" alt="Volleyball players playing a match">
+            <div class="image-tag">
+                <strong>12</strong>
+                <span>RISE TOGETHER.<br>PLAY TO WIN.</span>
+            </div>
+        </div>
+
+        <div class="about-copy reveal">
+            <p class="eyebrow">TEAMWORK / TIMING / ENERGY</p>
+            <h2>Volleyball<br><span>Rise Together.</span></h2>
+            <p>
+                Volleyball is an energetic team sport built on
+                communication, timing and coordination. Players
+                learn serving, setting, spiking and blocking while
+                developing trust and teamwork.
+            </p>
+            <ul class="benefit-list">
+                <li><span>✦</span> Master serving and spiking</li>
+                <li><span>✦</span> Improve jumping and coordination</li>
+                <li><span>✦</span> Build communication and team spirit</li>
+            </ul>
+            <a href="#membership" class="text-link">Explore membership →</a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =================================
+     SECTION: OUR FACILITIES
+================================= -->
+
+<section class="facilities-section" id="facilities">
+
+    <div class="section-heading reveal">
+        <p class="eyebrow">TRAIN / PLAY / PERFORM</p>
+        <h2>World-Class <span>Facilities.</span></h2>
+        <p>
+            Explore the spaces designed to help you train,
+            improve and achieve your sporting goals.
+        </p>
+    </div>
+
+    <div class="facilities-grid">
+
+        <!-- 01 GYM -->
+        <article class="facility-card reveal">
+            <div class="facility-image">
+                <img src="https://www.corehandf.com/cdn/shop/articles/Chiswick-EG-7_1.jpg?v=1782411009"
+                     alt="Modern gym with fitness equipment">
+                <span>01 / FITNESS</span>
+            </div>
+            <div class="facility-info">
+                <h3>Modern Gym</h3>
+                <p>
+                    Train with modern fitness equipment and
+                    dedicated strength and conditioning spaces.
+                </p>
+            </div>
+        </article>
+
+        <!-- 02 INDOOR COURTS -->
+        <article class="facility-card reveal">
+            <div class="facility-image">
+                <img src="https://www.thealaskaclub.com/hs-fs/hubfs/Basketball-001-Web-1-1.jpg?width=1000&height=667&name=Basketball-001-Web-1-1.jpg"
+                     alt="Indoor sports court">
+                <span>02 / INDOOR</span>
+            </div>
+            <div class="facility-info">
+                <h3>Indoor Courts</h3>
+                <p>
+                    Enjoy indoor sports training with dedicated
+                    playing spaces for racket and court sports.
+                </p>
+            </div>
+        </article>
+
+        <!-- 03 SWIMMING POOL -->
+        <article class="facility-card reveal">
+            <div class="facility-image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBkzQaZ7QyJiTD0IDXXI9fkCfYD4rU3iYJtbaXVeC0Zg&s=10"
+                     alt="Swimming pool">
+                <span>03 / AQUATICS</span>
+            </div>
+            <div class="facility-info">
+                <h3>Swimming Pool</h3>
+                <p>
+                    Develop swimming skills, endurance and
+                    water confidence in a dedicated pool.
+                </p>
+            </div>
+        </article>
+
+        <!-- 04 OUTDOOR GROUND -->
+        <article class="facility-card reveal">
+            <div class="facility-image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0AEtIKEu5GXZ23sMr3Eto9oBd856dIDlufP_SH8W_gA&s=10"
+                     alt="Outdoor sports ground">
+                <span>04 / OUTDOOR</span>
+            </div>
+            <div class="facility-info">
+                <h3>Sports Ground</h3>
+                <p>
+                    Practice outdoor games, team sports and
+                    athletic activities in open playing spaces.
+                </p>
+            </div>
+        </article>
+
+        <!-- 05 TRAINING AREA -->
+        <article class="facility-card reveal">
+            <div class="facility-image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5Ac_HLR0R3jrmt_ac6zB4DTNBqw-R6j8bzyNuOQBh8A&s=10"
+                     alt="Athletes training together">
+                <span>05 / TRAINING</span>
+            </div>
+            <div class="facility-info">
+                <h3>Training Zone</h3>
+                <p>
+                    Focus on fitness, flexibility, agility and
+                    performance through structured workouts.
+                </p>
+            </div>
+        </article>
+
+        <!-- 06 CHANGING ROOM -->
+        <article class="facility-card reveal">
+            <div class="facility-image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp1KfCn3ErpOob8UCwk1nnWpVVOOw6Q7pvyxQECQIWnA&s=10"
+                     alt="Modern sports changing room">
+                <span>06 / COMFORT</span>
+            </div>
+            <div class="facility-info">
+                <h3>Changing Rooms</h3>
+                <p>
+                    Convenient changing spaces designed to
+                    support comfort before and after training.
+                </p>
+            </div>
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     SECTION: PROFESSIONAL COACHES
+================================= -->
+
+<section class="coaches-section" id="coaches">
+
+    <div class="section-heading reveal">
+        <p class="eyebrow">GUIDANCE / EXPERIENCE / EXCELLENCE</p>
+        <h2>Meet Our <span>Coaches.</span></h2>
+        <p>
+            Learn new skills, improve your performance and
+            grow with dedicated sports guidance.
+        </p>
+    </div>
+
+    <div class="coaches-grid">
+
+        <!-- COACH 01 -->
+        <article class="coach-card reveal">
+
+            <div class="coach-image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIOuBTdYaJnp7qZSM8B6tM5bKAWI8n8vtreJEm9mhCWQ&s=10"
+                     alt="Sports fitness coach">
+                <span>01 / FITNESS</span>
+            </div>
+
+            <div class="coach-info">
+                <p class="coach-role">STRENGTH & CONDITIONING</p>
+                <h3>Alex Morgan</h3>
+                <p>
+                    Focused on physical fitness, strength
+                    development and athletic conditioning.
+                </p>
+            </div>
+
+        </article>
+
+
+        <!-- COACH 02 -->
+        <article class="coach-card reveal">
+
+            <div class="coach-image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnLHREvlmQfsGcqEwu2Ko7HhpkR2upRLMq5nzlSe-j4A&s=10"
+                     alt="Football sports coach">
+                <span>02 / FOOTBALL</span>
+            </div>
+
+            <div class="coach-info">
+                <p class="coach-role">TEAM SPORTS</p>
+                <h3>Ryan Carter</h3>
+                <p>
+                    Specialises in football skills, teamwork
+                    and tactical development.
+                </p>
+            </div>
+
+        </article>
+
+
+        <!-- COACH 03 -->
+        <article class="coach-card reveal">
+
+            <div class="coach-image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_sde6N9S6TLStyqrE9ADbTPL7N12EQeclYP1g0_Y7Ew&s=10"
+                     alt="Badminton sports coach">
+                <span>03 / BADMINTON</span>
+            </div>
+
+            <div class="coach-info">
+                <p class="coach-role">RACKET SPORTS</p>
+                <h3>Emma Wilson</h3>
+                <p>
+                    Helps players develop racket skills,
+                    footwork and match strategies.
+                </p>
+            </div>
+
+        </article>
+
+
+        <!-- COACH 04 -->
+        <article class="coach-card reveal">
+
+            <div class="coach-image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3WhxRukjSxskqn-A0eDB1L4k1OIlbQ-pL4YPe1Q1qNw&s=10"
+                     alt="Swimming coach">
+                <span>04 / SWIMMING</span>
+            </div>
+
+            <div class="coach-info">
+                <p class="coach-role">AQUATIC TRAINING</p>
+                <h3>Daniel Smith</h3>
+                <p>
+                    Focuses on swimming techniques,
+                    water confidence and endurance.
+                </p>
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     SECTION: UPCOMING EVENTS
+================================= -->
+
+<section class="events-section" id="events">
+
+    <div class="section-heading reveal">
+        <p class="eyebrow">COMPETE / PARTICIPATE / CELEBRATE</p>
+        <h2>Upcoming <span>Events.</span></h2>
+        <p>
+            Discover exciting tournaments, competitions
+            and fitness challenges at ATHLETIX.
+        </p>
+    </div>
+
+
+    <div class="events-container">
+
+        <!-- EVENT 01 -->
+        <article class="event-card reveal">
+
+            <div class="event-date">
+                <strong>15</strong>
+                <span>DEC</span>
+            </div>
+
+            <div class="event-details">
+                <span class="event-category">
+                    BADMINTON / TOURNAMENT
+                </span>
+
+                <h3>Champions League</h3>
+
+                <p>
+                    Test your badminton skills and compete
+                    with players in an exciting tournament.
+                </p>
+
+                <div class="event-meta">
+                    <span>◷ 09:00 AM</span>
+                    <span>⌖ Indoor Court</span>
+                </div>
+            </div>
+
+            <a href="#join" class="event-link">
+                Register ↗
+            </a>
+
+        </article>
+
+
+        <!-- EVENT 02 -->
+        <article class="event-card reveal">
+
+            <div class="event-date">
+                <strong>20</strong>
+                <span>DEC</span>
+            </div>
+
+            <div class="event-details">
+                <span class="event-category">
+                    FOOTBALL / CHAMPIONSHIP
+                </span>
+
+                <h3>Football Championship</h3>
+
+                <p>
+                    Bring your team together and experience
+                    the excitement of competitive football.
+                </p>
+
+                <div class="event-meta">
+                    <span>◷ 10:00 AM</span>
+                    <span>⌖ Sports Ground</span>
+                </div>
+            </div>
+
+            <a href="#join" class="event-link">
+                Register ↗
+            </a>
+
+        </article>
+
+
+        <!-- EVENT 03 -->
+        <article class="event-card reveal">
+
+            <div class="event-date">
+                <strong>25</strong>
+                <span>DEC</span>
+            </div>
+
+            <div class="event-details">
+                <span class="event-category">
+                    CRICKET / COMPETITION
+                </span>
+
+                <h3>Cricket Showdown</h3>
+
+                <p>
+                    Showcase your batting, bowling and fielding
+                    skills in a competitive team event.
+                </p>
+
+                <div class="event-meta">
+                    <span>◷ 08:00 AM</span>
+                    <span>⌖ Cricket Ground</span>
+                </div>
+            </div>
+
+            <a href="#join" class="event-link">
+                Register ↗
+            </a>
+
+        </article>
+
+
+        <!-- EVENT 04 -->
+        <article class="event-card reveal">
+
+            <div class="event-date">
+                <strong>28</strong>
+                <span>DEC</span>
+            </div>
+
+            <div class="event-details">
+                <span class="event-category">
+                    FITNESS / CHALLENGE
+                </span>
+
+                <h3>Ultimate Fitness Challenge</h3>
+
+                <p>
+                    Challenge your physical fitness through
+                    strength, endurance and agility activities.
+                </p>
+
+                <div class="event-meta">
+                    <span>◷ 07:00 AM</span>
+                    <span>⌖ Training Zone</span>
+                </div>
+            </div>
+
+            <a href="#join" class="event-link">
+                Register ↗
+            </a>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+
+        <!-- SECTION 7: MEMBERSHIP -->
+
+        <section class="section membership-section"
+            id="membership">
+
+            <div class="container">
+
+
+                <div class="section-heading reveal">
+
+                    <div>
+
+                        <p class="eyebrow">YOUR NEXT MOVE</p>
+
+                        <h2>
+
+                            Make room for <span>greatness.</span>
+
+                        </h2>
+
+                    </div>
+
+
+                    <p class="section-intro">
+
+                        Start with a plan that fits your pace.
+                        Choose your membership and become part
+                        of the team.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="plans">
+
+
+                    <!-- PLAN 1 -->
+
+                    <article class="plan-card reveal">
+
+                        <p class="plan-label">STARTER</p>
+
+                        <h3>Explorer</h3>
+
+                        <p class="plan-price">
+
+                            ₹499 <small>/ month</small>
+
+                        </p>
+
+                        <p class="plan-desc">
+
+                            A great way to get started.
+
+                        </p>
+
+
+                        <ul>
+
+                            <li>Access to 1 sport</li>
+
+                            <li>2 sessions per week</li>
+
+                            <li>Community events</li>
+
+                        </ul>
+
+
+                        <a href="#join" class="plan-link">
+
+                            Choose Explorer ↗
+
+                        </a>
+
+                    </article>
+
+
+
+                    <!-- PLAN 2 -->
+
+                    <article class="plan-card featured reveal">
+
+                        <div class="popular">
+
+                            MOST POPULAR
+
+                        </div>
+
+                        <p class="plan-label">ALL-ROUND</p>
+
+                        <h3>Champion</h3>
+
+                        <p class="plan-price">
+
+                            ₹999 <small>/ month</small>
+
+                        </p>
+
+                        <p class="plan-desc">
+
+                            For players ready to level up.
+
+                        </p>
+
+
+                        <ul>
+
+                            <li>Access to all 12 sports</li>
+
+                            <li>Unlimited weekly sessions</li>
+
+                            <li>Priority event registration</li>
+
+                        </ul>
+
+
+                        <a href="#join" class="plan-link">
+
+                            Choose Champion ↗
+
+                        </a>
+
+                    </article>
+
+
+
+                    <!-- PLAN 3 -->
+
+                    <article class="plan-card reveal">
+
+                        <p class="plan-label">TEAM PLAYER</p>
+
+                        <h3>Squad</h3>
+
+                        <p class="plan-price">
+
+                            ₹1,499 <small>/ month</small>
+
+                        </p>
+
+                        <p class="plan-desc">
+
+                            Bring your people along.
+
+                        </p>
+
+
+                        <ul>
+
+                            <li>Group of up to 3 members</li>
+
+                            <li>Access to all sports</li>
+
+                            <li>Team practice sessions</li>
+
+                        </ul>
+
+
+                        <a href="#join" class="plan-link">
+
+                            Choose Squad ↗
+
+                        </a>
+
+                    </article>
+
+                </div>
+
+
+                <p class="disclaimer">
+
+                    * Sample student-project prices and member counts
+                    for demonstration purposes.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- SECTION 5: JOIN -->
+
+        <section class="join-section" id="join">
+
+            <div class="container join-grid">
+
+
+                <div class="reveal-left">
+
+                    <p class="eyebrow">
+
+                        TAKE THE FIRST STEP
+
+                    </p>
+
+
+                    <h2>
+
+                        Ready to<br>
+
+                        <span>get in the game?</span>
+
+                    </h2>
+
+
+                    <p class="join-copy">
+
+                        Fill in the form and our club team
+                        will be in touch.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- REGISTRATION FORM -->
+
+                <form class="join-form reveal"
+                    id="joinForm"
+                    novalidate>
+
+
+                    <div class="form-row">
+
+                        <label for="fullName">
+
+                            Your name
+
+                        </label>
+
+
+                        <input
+                            id="fullName"
+                            name="fullName"
+                            type="text"
+                            autocomplete="name"
+                            required>
+
+
+                        <small class="error" id="nameError"></small>
+
+                    </div>
+
+
+
+                    <div class="form-row">
+
+                        <label for="email">
+
+                            Email address
+
+                        </label>
+
+
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            autocomplete="email"
+                            required>
+
+
+                        <small class="error" id="emailError"></small>
+
+                    </div>
+
+
+
+                    <div class="form-row">
+
+                        <label for="sportChoice">
+
+                            Choose your sport
+
+                        </label>
+
+
+                        <select
+                            id="sportChoice"
+                            name="sportChoice"
+                            required>
+
+                            <option value="">
+
+                                Select a sport
+
+                            </option>
+
+                            <option>Badminton</option>
+                            <option>Basketball</option>
+                            <option>Football</option>
+                            <option>Volleyball</option>
+                            <option>Table Tennis</option>
+                            <option>Cricket</option>
+                            <option>Tennis</option>
+                            <option>Asthetics</option>
+                            <option>Hockey</option>
+                            <option>Swimming</option>
+                            <option>Boxing</option>
+                            <option>Kabaddi</option>
+                            
+                        
+                        </select>
+
+
+                        <small class="error" id="sportError"></small>
+
+                    </div>
+
+
+
+                    <button class="btn btn-primary submit-btn"
+                        type="submit">
+
+                        Send my interest <span>↗</span>
+
+                    </button>
+
+
+                    <p class="form-message"
+                        id="formMessage"
+                        role="status"
+                        aria-live="polite">
+
+                    </p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+        <div class="container copyright">
+
+            <span>
+
+                © 2026 ATHLETIX SPORTS CLUB
+
+            </span>
+
+
+            <span>
+
+                MADE FOR THE LOVE OF SPORT
+
+            </span>
+
+
+        </div>
+
+
+<!-- =================================
+     SECTION: CONTACT US
+================================= -->
+
+<section class="contact-section" id="contact">
+
+    <div class="section-heading reveal">
+        <p class="eyebrow">LET'S CONNECT / GET IN TOUCH</p>
+        <h2>Contact Us<span>ATHLETIX.</span></h2>
+        <p>
+            Have questions about sports, membership or training?
+            We'd love to hear from you.
+        </p>
+    </div>
+
+    <div class="container contact-grid">
+
+        <!-- CONTACT INFORMATION -->
+
+        <div class="contact-info reveal-left">
+
+            <p class="contact-label">GET IN TOUCH</p>
+
+            <h3>Let's start a<br><span>conversation.</span></h3>
+
+            <p class="contact-description">
+                Whether you want to join our club, explore our
+                facilities or learn more about our sports programs,
+                our team is here to help.
+            </p>
+
+            <!-- ADDRESS -->
+
+            <div class="contact-item">
+                <div class="contact-icon">⌖</div>
+                <div>
+                    <h4>Our Location</h4>
+                    <p>Career Point University, Kota, Rajasthan, India</p>
+                </div>
+            </div>
+
+            <!-- PHONE -->
+
+            <div class="contact-item">
+                <div class="contact-icon">✆</div>
+                <div>
+                    <h4>Call Us</h4>
+                    <p>+91 9521056637</p>
+                </div>
+            </div>
+
+            <!-- EMAIL -->
+
+            <div class="contact-item">
+                <div class="contact-icon">✉</div>
+                <div>
+                    <h4>Email Us</h4>
+                    <p>kinitj5169@gmail.com</p>
+                </div>
+            </div>
+
+            <!-- SOCIAL MEDIA -->
+
+            <div class="contact-socials">
+                <h4>FOLLOW OUR JOURNEY</h4>
+
+                <div class="social-links">
+                    <a href="https://www.instagram.com/"
+                       target="_blank" rel="noopener noreferrer">IG</a>
+
+                    <a href="https://www.facebook.com/"
+                       target="_blank" rel="noopener noreferrer">FB</a>
+
+                    <a href="https://www.youtube.com/"
+                       target="_blank" rel="noopener noreferrer">YT</a>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- CONTACT FORM -->
+
+        <div class="contact-form-box reveal">
+
+            <div class="form-heading">
+                <p class="eyebrow">SEND US A MESSAGE</p>
+                <h3>Get in <span>touch.</span></h3>
+                <p>Fill out the form below and let us know how we can help.</p>
+            </div>
+
+            <form id="contactForm">
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="contactName">Your Name</label>
+                        <input
+                            type="text"
+                            id="contactName"
+                            placeholder="Enter your name"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactEmail">Email Address</label>
+                        <input
+                            type="email"
+                            id="contactEmail"
+                            placeholder="Enter your email"
+                            required>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="contactSubject">Subject</label>
+                    <select id="contactSubject" required>
+                        <option value="">Select a subject</option>
+                        <option>Membership Enquiry</option>
+                        <option>Sports Training</option>
+                        <option>Facilities Information</option>
+                        <option>Events and Tournaments</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactMessage">Your Message</label>
+                    <textarea
+                        id="contactMessage"
+                        rows="5"
+                        placeholder="Write your message here..."
+                        required></textarea>
+                </div>
+
+                <button type="submit" class="contact-submit">
+                    Send Message ↗
+                </button>
+
+                <p id="contactStatus" class="contact-status"
+                   aria-live="polite"></p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer class="site-footer">
+    <div class="footer-container">
+
+        <!-- Brand -->
+        <div class="footer-brand">
+            <a href="#home" class="footer-logo">
+                ATHLETIX<span>.</span>
+            </a>
+            <p>
+                Train harder. Play smarter. Live stronger.
+                Join a community where passion meets performance.
+            </p>
+
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/" target="_blank">IG</a>
+                <a href="https://www.facebook.com/" target="_blank">FB</a>
+                <a href="https://www.youtube.com/" target="_blank">YT</a>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#sports">Sports</a>
+            <a href="#facilities">Facilities</a>
+            <a href="#coaches">Our Coaches</a>
+        </div>
+
+        <!-- Explore -->
+        <div class="footer-links">
+            <h3>Explore</h3>
+            <a href="#events">Upcoming Events</a>
+            <a href="#membership">Membership</a>
+            <a href="#join">Join the Club</a>
+            <a href="#contact">Contact Us</a>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-contact">
+            <h3>Get In Touch</h3>
+            <p>📍 Career Point University, Kota</p>
+            <p>📞 +91 9521056637</p>
+            <p>✉️ kinitj5169.com</p>
+            <a href="#contact" class="footer-button">Contact Us ↗</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 ATHLETIX Sports Club. All rights reserved.</p>
+        <a href="#home">Back to Top ↑</a>
+    </div>
+</footer>
+
+    </footer>
+
+
+
+    <!-- ================= JAVASCRIPT START ================= -->
+
+    <script>
+
+
+        // 1. DARK AND LIGHT MODE
+
+        const themeToggle =
+            document.getElementById("themeToggle");
+
+        const savedTheme =
+            localStorage.getItem("athletix-theme");
+
+
+        // Restore saved theme.
+
+        if (savedTheme === "light") {
+
+            document.body.classList.add("light-theme");
+
+            themeToggle.textContent = "☾";
+
+        }
+
+
+        themeToggle.addEventListener("click", () => {
+
+            document.body.classList.toggle("light-theme");
+
+            const isLight =
+                document.body.classList.contains("light-theme");
+
+            localStorage.setItem(
+                "athletix-theme",
+                isLight ? "light" : "dark"
+            );
+
+            themeToggle.textContent =
+                isLight ? "☾" : "☼";
+
+        });
+
+
+
+        // 2. TIME-BASED GREETING
+
+        const greeting =
+            document.getElementById("greeting");
+
+        const hour = new Date().getHours();
+
+        const timeGreeting =
+            hour < 12
+                ? "Good morning"
+                : hour < 18
+                    ? "Good afternoon"
+                    : "Good evening";
+
+
+        greeting.textContent =
+            `${timeGreeting}! Welcome to ATHLETIX — where passion meets performance.`;
+
+
+
+        // 3. MOBILE NAVIGATION
+
+        const menuToggle =
+            document.getElementById("menuToggle");
+
+        const navLinks =
+            document.getElementById("navLinks");
+
+
+        menuToggle.addEventListener("click", () => {
+
+            const isOpen =
+                navLinks.classList.toggle("open");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
+            menuToggle.textContent =
+                isOpen ? "×" : "☰";
+
+        });
+
+
+        navLinks.querySelectorAll("a").forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                navLinks.classList.remove("open");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                menuToggle.textContent = "☰";
+
+            });
+
+        });
+
+
+
+        // 4. SPORTS FILTER
+
+        const filterButtons =
+            document.querySelectorAll(".filter-btn");
+
+        const sportCards =
+            document.querySelectorAll(".sport-card");
+
+        const noResults =
+            document.getElementById("noResults");
+
+
+        filterButtons.forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                filterButtons.forEach(item => {
+
+                    item.classList.remove("active");
+
+                });
+
+                button.classList.add("active");
+
+                const filter = button.dataset.filter;
+
+                let visible = 0;
+
+
+                sportCards.forEach(card => {
+
+                    const show =
+                        filter === "all" ||
+                        card.dataset.category === filter;
+
+                    card.hidden = !show;
+
+                    if (show) {
+
+                        visible++;
+
+                    }
+
+                });
+
+
+                noResults.hidden = visible !== 0;
+
+            });
+
+        });
+
+
+
+        // 5. SCROLL REVEAL ANIMATION
+
+        const revealItems =
+            document.querySelectorAll(".reveal, .reveal-left");
+
+
+        if ("IntersectionObserver" in window) {
+
+            const revealObserver =
+                new IntersectionObserver((entries, observer) => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("visible");
+
+                            observer.unobserve(entry.target);
+
+                        }
+
+                    });
+
+                }, {
+                    threshold: 0.12
+                });
+
+
+            revealItems.forEach(item => {
+
+                revealObserver.observe(item);
+
+            });
+
+        } else {
+
+            revealItems.forEach(item => {
+
+                item.classList.add("visible");
+
+            });
+
+        }
+
+
+
+        // 6. ANIMATED NUMBER COUNTERS
+
+        const counters =
+            document.querySelectorAll(".counter");
+
+
+        const countUp = element => {
+
+            const target =
+                Number(element.dataset.target);
+
+            const suffix =
+                element.dataset.suffix || "";
+
+            const duration = 1300;
+
+            const startTime = performance.now();
+
+
+            const update = now => {
+
+                const progress = Math.min(
+                    (now - startTime) / duration,
+                    1
+                );
+
+                const eased =
+                    1 - Math.pow(1 - progress, 3);
+
+                element.textContent =
+                    Math.floor(target * eased)
+                        .toLocaleString("en-IN") + suffix;
+
+
+                if (progress < 1) {
+
+                    requestAnimationFrame(update);
+
+                }
+
+            };
+
+
+            requestAnimationFrame(update);
+
+        };
+
+
+        if ("IntersectionObserver" in window) {
+
+            const counterObserver =
+                new IntersectionObserver((entries, observer) => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            countUp(entry.target);
+
+                            observer.unobserve(entry.target);
+
+                        }
+
+                    });
+
+                }, {
+                    threshold: 0.7
+                });
+
+
+            counters.forEach(counter => {
+
+                counterObserver.observe(counter);
+
+            });
+
+        } else {
+
+            counters.forEach(counter => {
+
+                countUp(counter);
+
+            });
+
+        }
+
+
+
+        // 7. SCROLL PROGRESS INDICATOR
+
+        const progressBar =
+            document.getElementById("scrollProgress");
+
+
+        window.addEventListener("scroll", () => {
+
+            const scrollable =
+                document.documentElement.scrollHeight -
+                window.innerHeight;
+
+            const progress =
+                scrollable > 0
+                    ? (window.scrollY / scrollable) * 100
+                    : 0;
+
+            progressBar.style.width = `${progress}%`;
+
+        }, {
+            passive: true
+        });
+
+
+
+        // 8. REGISTRATION FORM VALIDATION
+
+        const joinForm =
+            document.getElementById("joinForm");
+
+        const fullName =
+            document.getElementById("fullName");
+
+        const email =
+            document.getElementById("email");
+
+        const sportChoice =
+            document.getElementById("sportChoice");
+
+        const formMessage =
+            document.getElementById("formMessage");
+
+
+        joinForm.addEventListener("submit", event => {
+
+            event.preventDefault();
+
+
+            const nameValue =
+                fullName.value.trim();
+
+            const emailValue =
+                email.value.trim();
+
+            const sportValue =
+                sportChoice.value;
+
+
+            const emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+            // Validate name.
+
+            document.getElementById("nameError").textContent =
+                nameValue.length < 2
+                    ? "Please enter at least 2 characters."
+                    : "";
+
+
+            // Validate email.
+
+            document.getElementById("emailError").textContent =
+                !emailPattern.test(emailValue)
+                    ? "Enter a valid email address."
+                    : "";
+
+
+            // Validate sport.
+
+            document.getElementById("sportError").textContent =
+                !sportValue
+                    ? "Please choose a sport."
+                    : "";
+
+
+            const isValid =
+                nameValue.length >= 2 &&
+                emailPattern.test(emailValue) &&
+                sportValue;
+
+
+            if (isValid) {
+
+                formMessage.textContent =
+                    `Thanks, ${nameValue}! Your interest in ${sportValue} has been recorded for this demo.`;
+                joinForm.reset();
+            } else {
+                formMessage.textContent =
+                    "Please correct the highlighted fields.";
+            }
+        });
+
+// =================================
+// CONTACT FORM VALIDATION
+// =================================
+
+const contactForm = document.getElementById("contactForm");
+
+if (contactForm) {
+
+    contactForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const name = document.getElementById("contactName").value.trim();
+        const email = document.getElementById("contactEmail").value.trim();
+        const subject = document.getElementById("contactSubject").value;
+        const message = document.getElementById("contactMessage").value.trim();
+
+        const status = document.getElementById("contactStatus");
+
+        if (!name || !email || !subject || !message) {
+            status.textContent = "Please complete all fields.";
+            return;
+        }
+
+        if (message.length < 10) {
+            status.textContent = "Please enter a message of at least 10 characters.";
+            return;
+        }
+
+        status.textContent = "Thank you, " + name + "! Your form has been validated.";
+
+        contactForm.reset();
+
+    });
+
+}
+
+    </script>
+</body>
+</html>
